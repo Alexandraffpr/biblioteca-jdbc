@@ -1,5 +1,4 @@
 package com.dam.ad.dao;
-
 import com.dam.ad.db.Db;
 
 import java.sql.*;
