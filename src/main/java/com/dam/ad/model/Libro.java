@@ -7,7 +7,7 @@ public class Libro {
     private Integer anio;
     private boolean disponible;
 
-    // Constructor para libros que ya existen (con ID) [cite: 1030-1031]
+    // Constructor para libros que ya existen (con ID)
     public Libro(Integer id, String titulo, String isbn, Integer anio, boolean disponible) {
         this.id = id;
         this.titulo = titulo;
@@ -17,9 +17,9 @@ public class Libro {
     }
     // Constructor para libros nuevos (sin ID)
     public Libro(String titulo, String isbn, Integer anio, boolean disponible) {
-        this(null, titulo, isbn, anio, disponible); // El ID nace como null [cite: 1042]
+        this(null, titulo, isbn, anio, disponible); // El ID nace como null
     }
-    // Getters y Setters necesarios para el DAO [cite: 1044-1053, 1071]
+    // Getters y Setters necesarios para el DAO
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
     public String getTitulo() { return titulo; }
