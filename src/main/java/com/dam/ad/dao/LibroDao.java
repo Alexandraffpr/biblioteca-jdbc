@@ -100,4 +100,31 @@ public class LibroDao {
             throw new RuntimeException("Error borrando libro id=" + id, e);
         }
     }
+
+    // Nuevo metodo para buscar libros por una palabra en el título
+    public List<Libro> searchByTitulo(String texto) {
+        // Usamos LIKE para buscar patrones y LOWER para ignorar mayúsculas
+        String sql = "SELECT id, titulo, isbn, anio, disponible FROM libro WHERE LOWER(titulo) LIKE ?";
+        List<Libro> resultados = new ArrayList<>();
+
+        try (Connection con = Db.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            // El % indica que puede haber cualquier texto antes o después
+            // Ejemplo: "%Harry%" busca cualquier título que contenga "Harry"
+            ps.setString(1, "%" + texto.toLowerCase() + "%");
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    // Reutilizamos mapRow de la Práctica 2
+                    resultados.add(mapRow(rs));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al buscar por título", e);
+        }
+        return resultados;
+    }
+
+
 }
