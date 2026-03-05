@@ -15,7 +15,7 @@ public class CrudDemo {
         System.out.println("Insertado con id=" + id + " -> " + nuevo);
 
         System.out.println("\n=== FIND BY ID ===");
-        dao.findById(id).ifPresentOrElse(
+            dao.findById(id).ifPresentOrElse(
                 System.out::println,
                 () -> System.out.println("No encontrado")
         );
@@ -31,5 +31,9 @@ public class CrudDemo {
 
         System.out.println("\n=== ESTADO FINAL ===");
         dao.findAll().forEach(System.out::println);
+
+        System.out.println("\n=== SEARCH BY TITULO (Buscando 'Harry') ===");
+        // Llamamos al nuevo método y mostramos los resultados
+        dao.searchByTitulo("Harry").forEach(System.out::println);
     }
 }
