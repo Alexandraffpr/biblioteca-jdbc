@@ -1,14 +1,15 @@
-package com.dam.ad.dao;
+package com.dam.ad.repository.jdbc;
 import com.dam.ad.db.Db;
 import com.dam.ad.model.Libro;
+import com.dam.ad.repository.LibroRepository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class LibroDao {
+public class JdbcLibroRepository implements LibroRepository {
 
-    // SUGERENCIA: Método "helper" para evitar duplicar código
+    // SUGERENCIA: "helper" para evitar duplicar código
     private Libro mapRow(ResultSet rs) throws SQLException {
         return new Libro(
                 rs.getInt("id"),
